@@ -43,7 +43,7 @@ on:
         #- opencrash
         
   #schedule:
-    #- cron: 0 4 1,15 * *
+    #- cron: 0 5 * * 3
 
 #CI权限
 permissions: write-all
