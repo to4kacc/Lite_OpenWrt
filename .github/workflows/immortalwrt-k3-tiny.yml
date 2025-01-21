@@ -12,7 +12,7 @@ on:
       theme:
         description: '主题'     
         required: true
-        default: 'material' 
+        default: 'argon' 
         type: choice
         options:
         - material
@@ -21,7 +21,7 @@ on:
       OP_IP:
         description: 'IP选项'     
         required: true
-        default: '192.168.31.1'
+        default: '192.168.123.1'
         type: string
         
       OP_router:
@@ -42,8 +42,8 @@ on:
         #- openclash
         #- opencrash
         
-  #schedule:
-    #- cron: 0 5 * * 3
+  schedule:
+    - cron: 0 5 * * 3
 
 #CI权限
 permissions: write-all
