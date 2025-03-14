@@ -131,7 +131,7 @@ env:
 
 jobs:
   union_core:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: 清理服务器空间(Ubuntu)
         uses: rmoyulong/free-disk-space@main
@@ -186,6 +186,8 @@ jobs:
           sudo -E apt-get -qq update --fix-missing
           sudo -E apt-get -qq full-upgrade
           sudo -E apt-get -y install $(cat $GITHUB_WORKSPACE/Ubuntu-2204.txt)
+          #sudo -E apt -yqq install dos2unix
+          #sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
           sudo -E systemctl daemon-reload
@@ -290,6 +292,13 @@ jobs:
       - name: 加载自定义订阅源
         run: |
           cd openwrt
+          
+          #修改优酷路由宝l1的的内核版本
+          if [[ "${{ inputs.CORE_header }}" == *"ramips_mt7620_DEVICE_youku_yk-l1.config"* ]]; then
+            mv $GITHUB_WORKSPACE/patch/ramips/Makefile target/linux/ramips
+            #chmod -Rf 755 target/linux/ramips
+            ls -l target/linux/ramips         
+          fi
           
           if [[ "${{ inputs.CORE_feeds_conf }}" == *"false"* ]]; then
             echo "使用默认feeds.conf.default文件"
