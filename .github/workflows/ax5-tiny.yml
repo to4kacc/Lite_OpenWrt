@@ -2,7 +2,7 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
 #CI项目名 ssrplus
-name: ax5经典版-breeze303 【ssrplus】
+name: ax5经典版-满血nss 【ssrplus】
 
 on:
   #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月1日/15日12点编译一次
@@ -65,7 +65,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/LiBwrt-op/openwrt-6.x
+      CORE_URL: https://github.com/VIKINGYFY/immortalwrt
       #源码版本
       CORE_BRANCH: main
       CORE_tag_name: 经典版
@@ -84,7 +84,7 @@ jobs:
       ########################################################
       # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
       #自定义扩展源定义
-      CORE_DIY_P1_SH: openwrt.sh
+      CORE_DIY_P1_SH: openwrt_orther.sh
       ########################################################
       #固件通用设置
       CORE_DIY_P2_SH: Settings.sh
@@ -112,7 +112,7 @@ jobs:
       #特殊固件的方式 使用默认的：false
       CORE_Pack: false
       #feeds.conf.default  -- patch 目录 使用默认的：false
-      CORE_feeds_conf: ax5-nss-feeds.conf.default
+      CORE_feeds_conf: false
       #######################################################
       #openclash类型 CORE_DIY_P4_SH: false此设置失效
       #CORE_META: ${{ github.event.inputs.openclash_meta }}
